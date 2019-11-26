@@ -7,15 +7,15 @@ const userSchema = new Schema({
     {
       key: {
         type: String,
-        value: "20"
+        default: ["20"]
       },
       text: {
         type: String,
-        value: "20"
+        default: ["20"]
       },
       value: {
         type: String,
-        value: "20"
+        default: ["20"]
       }
     }
   ]});
