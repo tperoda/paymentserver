@@ -1,0 +1,25 @@
+@import "variables.scss";
+
+%navbar-centered {
+  background: $med-blue!important;
+  height: 60px;
+  box-shadow: 0.5px 1px $dark-grey !important;
+}
+
+%h4-header {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+}
+
+%rate-container {
+  text-align: center;
+  
+  p {
+    font-size: 18px;
+  }
+}
+
+%table-header {
+  background: $med-blue;
+  color: $light-grey;
+}

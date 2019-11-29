@@ -1,0 +1,33 @@
+@import "styles/variables.scss";
+
+.rate-input-form {
+  width: 68%;
+  display: inline-flex;
+  justify-content: space-between;
+
+  button.form-button {
+    background: $med-blue;
+    color: $light-grey;
+    height: 38px !important;
+  }
+
+  button.form-reset {
+    background: $green-blue;
+    color: $light-grey;
+    height: 38px !important;
+  }
+
+  .form-rate-field {
+    height: 55px;
+  }
+
+  .error-message {
+    font-size: 10px;
+    color: $error-red;
+  }
+
+  .error-border {
+    border: 1px solid red !important;
+    border-radius: 5px;
+  }
+}

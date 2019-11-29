@@ -4,7 +4,7 @@ const requireLogin = require("../middleware/requireLogin");
 
 module.exports = app => {
   app.get("/api/get_margin", requireLogin, (req, res) => {
-    // res.send(res.markup);
+    // res.send(req.users);
     console.log(req.margin);
   });
 

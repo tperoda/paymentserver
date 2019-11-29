@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+@import "../../styles/placeholders.scss";
+
+.payment-header {
+  @extend %navbar-centered;
+
+  a {
+    @extend %h4-header;
+    color: $light-grey;
+  }
+}

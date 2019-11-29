@@ -1,0 +1,6 @@
+@import "styles/placeholders.scss";
+
+.term-rate-container {
+  @extend %rate-container;
+
+}

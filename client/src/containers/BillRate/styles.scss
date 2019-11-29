@@ -1,0 +1,6 @@
+@import "styles/placeholders.scss";
+
+.bill-rate-container {
+  @extend %rate-container;
+
+}

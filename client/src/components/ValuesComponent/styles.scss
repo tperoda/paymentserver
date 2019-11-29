@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+@import "../../styles/placeholders.scss";
+
+.ui.table {
+  .values-header {
+    @extend %table-header;
+  }
+}
+
+.values-body {
+
+  td {
+    width: 100px;
+  }
+}

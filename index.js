@@ -30,15 +30,15 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/updateRates")(app);
 
-// if (process.env.NODE_ENV === "production") {
-//   // Express will serve Prod Assets
-//   app.use(express.static("paymentcalc/build"));
-//   // Express will serve index.html if route is unknown
-//   const path = require("path");
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(_dirname, "paymentcalc", "build", "index.html"));
-//   });
-// };
+if (process.env.NODE_ENV === "production") {
+  // Express will serve Prod Assets
+  app.use(express.static("paymentcalc/build"));
+  // Express will serve index.html if route is unknown
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(_dirname, "paymentcalc", "build", "index.html"));
+  });
+};
 
 const PORT = process.env.PORT || 5000;
 
