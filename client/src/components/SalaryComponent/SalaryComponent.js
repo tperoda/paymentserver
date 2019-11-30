@@ -5,11 +5,6 @@ import { salaryCalculation } from "utils";
 import "./styles.scss";
 
 const SalaryComponent = ({ payRate, termRate }) => {
-  SalaryComponent.propTypes = {
-    payRate: PropTypes.string.isRequired,
-    termRate: PropTypes.string.isRequired
-  };
-
   return (
     <Table className="salary-container" celled striped textAlign="center">
       <Table.Header>
@@ -39,6 +34,11 @@ const SalaryComponent = ({ payRate, termRate }) => {
       </Table.Body>
     </Table>
   );
+};
+
+SalaryComponent.propTypes = {
+  payRate: PropTypes.string.isRequired,
+  termRate: PropTypes.string.isRequired
 };
 
 export default SalaryComponent;

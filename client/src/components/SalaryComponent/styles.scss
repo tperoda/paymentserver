@@ -1,9 +1,14 @@
 @import "../../styles/variables.scss";
 @import "../../styles/placeholders.scss";
+@import "styles/mixins.scss";
 
 .ui.table {
   th.salary-header {
     @extend %table-header;
+  }
+
+  @include for-mobile {
+    display: none;
   }
 }
 

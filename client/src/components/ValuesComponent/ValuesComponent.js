@@ -6,16 +6,12 @@ import "./styles.scss";
 
 // TODO: Style component, possibly add modal or display for term rate calc
 const ValuesComponent = ({
-  billRate, payRate, termRate, percentage, type
+  billRate, 
+  payRate, 
+  termRate, 
+  percentage, 
+  type
 }) => {
-  ValuesComponent.propTypes = {
-    billRate: PropTypes.string.isRequired,
-    payRate: PropTypes.string.isRequired,
-    termRate: PropTypes.string.isRequired,
-    percentage: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
-  };
-
   return (
     <Table className="values-container" celled striped textAlign="center">
       <Table.Header>
@@ -53,6 +49,14 @@ const ValuesComponent = ({
       </Table.Body>
     </Table>
   );
+};
+
+ValuesComponent.propTypes = {
+  billRate: PropTypes.string.isRequired,
+  payRate: PropTypes.string.isRequired,
+  termRate: PropTypes.string.isRequired,
+  percentage: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default ValuesComponent;

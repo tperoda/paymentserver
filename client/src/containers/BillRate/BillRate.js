@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
-import { getPayRateFromBill, getTermRateFromPay } from "utils";
+import { getPayRateFromBill, getTermRateFromPay, useWindowDimensions } from "utils";
 import ValuesComponent from "components/ValuesComponent";
+import MobileValuesComponent from "components/ValuesComponent/MobileValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
 import "./styles.scss";
 import { UserContext } from "store/Store";
+
 
 const BillRate = () => {
   const [data, setData] = useState({
@@ -20,6 +22,24 @@ const BillRate = () => {
   const payRate = getPayRateFromBill(rate, margin);
   const termRate = getTermRateFromPay(payRate);
 
+  const { width } = useWindowDimensions();
+
+  const renderValuesComponent = () => {
+    return (
+      <ValuesComponent
+        billRate={rate}
+        percentage={margin}
+        termRate={termRate}
+        payRate={payRate}
+        type="Margin"
+      />
+    );
+  };
+
+  const renderMobileValuesComponent = () => {
+    return <MobileValuesComponent />;
+  }
+
   return (
     <div className="bill-rate-container">
       <p>
@@ -32,13 +52,8 @@ const BillRate = () => {
         setData={setData}
         percentageRates={marginArray}
       />
-      <ValuesComponent
-        billRate={rate}
-        percentage={margin}
-        termRate={termRate}
-        payRate={payRate}
-        type="Margin"
-      />
+      {width < 768 && renderMobileValuesComponent()}
+      {width >= 768 && renderValuesComponent()}
       <SalaryComponent payRate={payRate} termRate={termRate} />
     </div>
   );

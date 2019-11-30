@@ -2,13 +2,32 @@
 @import "styles/mixins.scss";
 
 .rate-input-form {
-  width: 70%;
+  width: 60%;
   display: inline-flex;
   justify-content: space-between;
 
+  @include for-desktop {
+    width: 55%;
+  }
+
+  @include for-tablet {
+    width: 70%;
+  }
   @include for-mobile {
+    width: 100%;
     display: block;
     margin: 0 auto;
+  }
+
+  .mobile-buttons {
+    display: inline-flex;
+    justify-content: space-between;
+    max-width: 300px;
+    float: right;
+
+    a {
+      color: $light-grey;
+    }
   }
 
   button.form-button {
@@ -20,6 +39,7 @@
       margin-top: 10px;
       float: right;
       margin-bottom: 10px;
+      font-size: 12px;
     }
   }
 

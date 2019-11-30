@@ -1,11 +1,36 @@
-@import "../../styles/variables.scss";
-@import "../../styles/placeholders.scss";
+@import "styles/variables.scss";
+@import "styles/placeholders.scss";
+@import "styles/mixins.scss";
 
 .payment-header {
   @extend %navbar-centered;
-
+  
   a {
     @extend %h4-header;
     color: $light-grey;
+  }
+
+  .login-link, .update-link {
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  .item {
+    @include for-mobile {
+      margin: 0 auto;
+    }
+  }
+
+  .item:before {
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  .right.menu {
+    @include for-mobile {
+      display: none !important;
+    }
   }
 }

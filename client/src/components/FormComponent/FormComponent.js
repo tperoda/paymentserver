@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { useWindowDimensions } from "utils";
 import { Formik, Form, Field } from "formik";
 import { Input, Dropdown, Button } from "semantic-ui-react";
 import { validationSchema } from "./validation";
@@ -10,6 +11,21 @@ const FormComponent = ({
   rateType, percentType, setData, percentageRates
 }) => {
 
+  const renderMobileButtons = () => {
+    return (
+      <div className="mobile-buttons">
+        <Button className="form-button" ><a href="/auth/google">Login</a></Button>
+        <Button className="form-button" ><a href="/update">Update Rates</a></Button>
+        <Button className="form-button" type="submit">Submit</Button>
+      </div>
+    )
+  }
+
+  const renderButton = () => {
+    return <Button className="form-button" type="submit">Submit</Button>;
+  }
+
+  const { width } = useWindowDimensions();
   return (
     <Formik
       initialValues={
@@ -41,7 +57,8 @@ const FormComponent = ({
             />
             {/* <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p> */}
           </div>
-          <Button className="form-button" type="submit">Submit</Button>
+          {width < 768 && renderMobileButtons()}
+          {width > 768 && renderButton()}
         </Form>
       )}
     </Formik>

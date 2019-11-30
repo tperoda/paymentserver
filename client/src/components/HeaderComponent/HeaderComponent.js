@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
@@ -25,6 +26,11 @@ const HeaderComponent = ({ loginValues }) => {
       </Menu.Menu>
     </Menu>
   );
+};
+
+HeaderComponent.propTypes = {
+  text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default HeaderComponent;
