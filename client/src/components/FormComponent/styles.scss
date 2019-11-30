@@ -1,20 +1,26 @@
 @import "styles/variables.scss";
+@import "styles/mixins.scss";
 
 .rate-input-form {
-  width: 68%;
+  width: 70%;
   display: inline-flex;
   justify-content: space-between;
+
+  @include for-mobile {
+    display: block;
+    margin: 0 auto;
+  }
 
   button.form-button {
     background: $med-blue;
     color: $light-grey;
     height: 38px !important;
-  }
 
-  button.form-reset {
-    background: $green-blue;
-    color: $light-grey;
-    height: 38px !important;
+    @include for-mobile {
+      margin-top: 10px;
+      float: right;
+      margin-bottom: 10px;
+    }
   }
 
   .form-rate-field {
@@ -29,5 +35,17 @@
   .error-border {
     border: 1px solid red !important;
     border-radius: 5px;
+  }
+}
+
+.ui.input {
+  @include for-mobile {
+    width: 100%;
+  }
+}
+
+.ui.selection.dropdown {
+  @include for-mobile {
+    width: 100%;
   }
 }

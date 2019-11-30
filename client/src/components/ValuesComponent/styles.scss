@@ -1,9 +1,17 @@
-@import "../../styles/variables.scss";
-@import "../../styles/placeholders.scss";
+@import "styles/variables.scss";
+@import "styles/placeholders.scss";
+@import "styles/mixins.scss";
 
 .ui.table {
   .values-header {
     @extend %table-header;
+  }
+
+  .mobile-header {
+    @include for-mobile {
+      background: $med-blue;
+      color: $light-grey;
+    }
   }
 }
 
@@ -11,5 +19,22 @@
 
   td {
     width: 100px;
+
+    @include for-mobile {
+      width: 25% !important;
+    }
   }
 }
+
+.ui.table:not(.unstackable) tr > td {
+  @include for-mobile {
+    display: inline !important;
+  }
+}
+
+.ui.table:not(.unstackable) td:first-child {
+  @include for-mobile {
+    font-weight: normal !important;
+  }
+}
+

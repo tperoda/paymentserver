@@ -35,7 +35,7 @@ const FormComponent = ({
         setData(data);
       }}
     >
-      {({ errors, setFieldValue, handleReset }) => (
+      {({ errors, setFieldValue }) => (
         <Form className="rate-input-form">
           <div className="form-rate-field">
             <Field placeholder={rateType} as={Input} name="rate" className={errors.rate ? "error-border" : ""} />
@@ -53,7 +53,6 @@ const FormComponent = ({
             {/* <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p> */}
           </div>
           <Button className="form-button" type="submit">Submit</Button>
-          <Button className="form-reset" onClick={handleReset}>Clear</Button>
         </Form>
       )}
     </Formik>

@@ -1,5 +1,27 @@
+@import "styles/responsive.scss";
+
 .payments-landing {
   padding: 0px 100px 0px 100px;
-  width: 75%;
+  width: 95%;
   margin: 35px auto;
+
+  @include for-desktop {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  @include for-tablet {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    
+  }
+
+  @include for-mobile {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }

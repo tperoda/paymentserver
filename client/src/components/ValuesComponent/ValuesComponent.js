@@ -19,7 +19,7 @@ const ValuesComponent = ({
   return (
     <Table className="values-container" celled striped textAlign="center">
       <Table.Header>
-        <Table.Row>
+        <Table.Row className="mobile-header">
           <Table.HeaderCell className="values-header" colSpan={8}>Calculated Values</Table.HeaderCell>
         </Table.Row>
       </Table.Header>

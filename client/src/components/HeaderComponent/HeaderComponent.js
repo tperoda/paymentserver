@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const HeaderComponent = ({ loginValues }) => {
-
-  console.log("Login Values", loginValues);
   return (
     <Menu pointing className="payment-header">
       <Menu.Item>

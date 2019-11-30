@@ -13,7 +13,7 @@ const SalaryComponent = ({ payRate, termRate }) => {
   return (
     <Table className="salary-container" celled striped textAlign="center">
       <Table.Header>
-        <Table.Row>
+        <Table.Row className="mobile-header">
           <Table.HeaderCell className="salary-header" colSpan={8}>Annual Salaries</Table.HeaderCell>
         </Table.Row>
       </Table.Header>

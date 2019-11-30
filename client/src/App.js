@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Container } from "semantic-ui-react";
 import Login from "containers/Login";
 import UpdateRates from "containers/UpdateRates";
 import Header from "./containers/Header";
@@ -7,6 +8,7 @@ import LandingComponent from "./containers/LandingPage/LandingPage";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
 import Store from "./store";
 import "./styles/global.scss";
+import "./styles/responsive.scss";
 
 function App() {
   return (
@@ -16,13 +18,15 @@ function App() {
           <header>
             <Header />
           </header>
-          <main>
-            <Switch>
-              <Route exact path="/" component={LandingComponent} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/update" component={UpdateRates} />
-            </Switch>
-          </main>
+          <Container>
+            <main>
+                <Switch>
+                  <Route exact path="/" component={LandingComponent} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/update" component={UpdateRates} />
+                </Switch>
+            </main>
+          </Container>
           <footer>
             <FooterComponent />
           </footer>

@@ -1,0 +1,15 @@
+@import "./mixins.scss";
+
+body {
+  .App {
+    .ui.container {
+      width: 1140px;
+
+      @include for-mobile {
+        width: 100% !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+    }
+  }
+}
