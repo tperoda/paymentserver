@@ -3,11 +3,11 @@ import HeaderComponent from "components/HeaderComponent";
 import { UserContext } from "store/Store";
 
 const Header = () => {
-  const userData = useContext(UserContext);
-  const { user } = userData;
+  const user = useContext(UserContext);
+  const { googleId } = user;
 
   const setLoginValues = () => {
-    if (user.googleId !== undefined) {
+    if (googleId !== undefined) {
       return {
         text: "Logout",
         url: "/api/logout"
@@ -23,7 +23,7 @@ const Header = () => {
 
   useEffect(() => {
     setLoginValues();
-  }, []);
+  });
 
   return <HeaderComponent loginValues={setLoginValues()} />;
 }

@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import { markupRates } from "constants/rates";
+import React, { useState, useContext } from "react";
 import ValuesComponent from "components/ValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
-import { getTermRateFromPay, getBillRateFromPay } from "utils";
+import { getTermRateFromPay, getBillRateFromPay, filterRates } from "utils";
 import "./styles.scss";
+import { UserContext } from "store/Store";
 
 const PayRate = () => {
   const [data, setData] = useState({
     rate: "0",
-    markup: "0"
+    markup: ""
   });
 
+  const user = useContext(UserContext);
+  const markupArray = user.markup;
+
   const { rate, markup } = data;
-  const billRate = getBillRateFromPay(rate, markup);
+
+  const billRate = getBillRateFromPay(rate, filterRates(markup, markupArray));
   const termRate = getTermRateFromPay(rate);
 
   return (
@@ -26,7 +30,7 @@ const PayRate = () => {
         rateType="Pay Rate"
         percentType="Markup"
         setData={setData}
-        percentageRates={markupRates}
+        percentageRates={markupArray}
       />
       <ValuesComponent
         billRate={billRate}

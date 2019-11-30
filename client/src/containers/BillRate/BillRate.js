@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { marginRates } from "constants/rates";
+import React, { useState, useContext } from "react";
 import { getPayRateFromBill, getTermRateFromPay } from "utils";
 import ValuesComponent from "components/ValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
 import "./styles.scss";
+import { UserContext } from "store/Store";
 
 const BillRate = () => {
   const [data, setData] = useState({
@@ -12,7 +12,11 @@ const BillRate = () => {
     rate: "0"
   });
 
+  const user = useContext(UserContext);
+  const marginArray = user.margin;
+
   const { rate, margin } = data;
+
   const payRate = getPayRateFromBill(rate, margin);
   const termRate = getTermRateFromPay(payRate);
 
@@ -26,7 +30,7 @@ const BillRate = () => {
         rateType="Bill Rate"
         percentType="Margin"
         setData={setData}
-        percentageRates={marginRates}
+        percentageRates={marginArray}
       />
       <ValuesComponent
         billRate={rate}

@@ -13,12 +13,15 @@ const FormComponent = ({
     rateType: PropTypes.string.isRequired,
     percentType: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
-    percentageRates: PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-      markup: PropTypes.string
-    }).isRequired
+    percentageRates: PropTypes.array.isRequired
+  };
+
+  FormComponent.defaultProps = {
+    percentageRates: [{
+      key: "Default Message",
+      text: "No Rates Found",
+      value: "No Rates Found"
+    }]
   };
 
   return (
@@ -43,11 +46,11 @@ const FormComponent = ({
           </div>
           <div>
             <Dropdown
+              selection
               placeholder={percentType}
               name={percentType.toLowerCase()}
               options={percentageRates}
-              selection
-              value={percentageRates.value}
+              value={percentageRates ? percentageRates.value : ""}
               onChange={(e, { name, value }) => setFieldValue(name, value)}
             />
             {/* <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p> */}

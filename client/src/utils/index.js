@@ -6,6 +6,7 @@ import {
 } from "./PaymentCalculations";
 import { salaryCalculation } from "./SalaryCalculation";
 import { formatCurrency } from "./FormatCurrency";
+import { filterRates } from "./filterRates";
 
 export {
   getPayRateFromBill,
@@ -13,5 +14,6 @@ export {
   getBillRateFromPay,
   getPayRateFromTerm,
   salaryCalculation,
-  formatCurrency
+  formatCurrency,
+  filterRates
 };

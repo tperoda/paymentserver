@@ -1,5 +1,3 @@
-const { markupRates } = require("constants/rates");
-
 // Takes a Bill Rate & Margin, and multiplies to give INC Pay Rate
 const getPayRateFromBill = (billRate, margin) => {
   if (billRate !== "0" && margin !== "0") {
@@ -24,12 +22,10 @@ const getTermRateFromPay = (payRate) => {
 };
 
 // Takes an INC Pay Rate and markup, multiplies to give Bill Rate
-const getBillRateFromPay = (payRate, markupKey) => {
-  if (markupKey !== "0") {
-    const markupObject = markupRates.filter((item) => item.key === markupKey);
-    const markupVal = markupObject[0];
+const getBillRateFromPay = (payRate, markup) => {
+  if (markup !== "0") {
     const payRateNumber = parseFloat(payRate).toFixed(2);
-    const billRate = payRateNumber * markupVal.markup
+    const billRate = payRateNumber * markup;
     return billRate.toString();
   }
 
