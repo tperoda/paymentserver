@@ -9,20 +9,6 @@ import "./styles.scss";
 const FormComponent = ({
   rateType, percentType, setData, percentageRates
 }) => {
-  FormComponent.propTypes = {
-    rateType: PropTypes.string.isRequired,
-    percentType: PropTypes.string.isRequired,
-    setData: PropTypes.func.isRequired,
-    percentageRates: PropTypes.array.isRequired
-  };
-
-  FormComponent.defaultProps = {
-    percentageRates: [{
-      key: "Default Message",
-      text: "No Rates Found",
-      value: "No Rates Found"
-    }]
-  };
 
   return (
     <Formik
@@ -60,6 +46,21 @@ const FormComponent = ({
       )}
     </Formik>
   );
+};
+
+FormComponent.propTypes = {
+  rateType: PropTypes.string.isRequired,
+  percentType: PropTypes.string.isRequired,
+  setData: PropTypes.func.isRequired,
+  percentageRates: PropTypes.array.isRequired
+};
+
+FormComponent.defaultProps = {
+  percentageRates: [{
+    key: "Default Message",
+    text: "No Rates Found",
+    value: "No Rates Found"
+  }]
 };
 
 export default FormComponent;
