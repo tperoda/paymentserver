@@ -1,15 +1,16 @@
 import React, { useState, useContext } from "react";
 import ValuesComponent from "components/ValuesComponent";
+import MobileValuesComponent from "components/ValuesComponent/MobileValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
-import { getTermRateFromPay, getBillRateFromPay, filterRates } from "utils";
+import { getTermRateFromPay, getBillRateFromPay, filterRates, useWindowDimensions } from "utils";
 import "./styles.scss";
 import { UserContext } from "store/Store";
 
 const PayRate = () => {
   const [data, setData] = useState({
     rate: "0",
-    markup: ""
+    markup: "0"
   });
 
   const user = useContext(UserContext);
@@ -19,6 +20,32 @@ const PayRate = () => {
 
   const billRate = getBillRateFromPay(rate, filterRates(markup, markupArray));
   const termRate = getTermRateFromPay(rate);
+
+  const { width } = useWindowDimensions();
+
+  const renderValuesComponent = () => {
+    return (
+      <ValuesComponent
+        billRate={billRate}
+        percentage={markup}
+        termRate={termRate}
+        payRate={rate}
+        type="Markup"
+      />
+    );
+  };
+
+  const renderMobileValuesComponent = () => {
+    return (
+      <MobileValuesComponent 
+        billRate={billRate}
+        percentage={markup}
+        termRate={termRate}
+        payRate={rate}
+        type="Markup"
+      />
+    );
+  };
 
   return (
     <div className="pay-rate-container">
@@ -32,13 +59,8 @@ const PayRate = () => {
         setData={setData}
         percentageRates={markupArray}
       />
-      <ValuesComponent
-        billRate={billRate}
-        percentage={markup}
-        termRate={termRate}
-        payRate={rate}
-        type="Markup"
-      />
+      {width < 768 && renderMobileValuesComponent()}
+      {width >= 768 && renderValuesComponent()}
       <SalaryComponent payRate={rate} termRate={termRate} />
     </div>
   );

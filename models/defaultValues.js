@@ -26,7 +26,7 @@ const defaultMarkup = [
     key: "21.96",
     text: "21.96",
     value: "21.96",
-    markup: 1.135,
+    markup: 1.22,
     marginPercent: "18"
   },
   {

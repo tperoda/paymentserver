@@ -33,4 +33,9 @@ HeaderComponent.propTypes = {
   url: PropTypes.string.isRequired
 };
 
+HeaderComponent.defaultProps = {
+  text: "",
+  url: ""
+};
+
 export default HeaderComponent;

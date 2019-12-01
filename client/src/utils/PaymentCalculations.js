@@ -13,7 +13,7 @@ const getPayRateFromBill = (billRate, margin) => {
 
 // Takes an INC Pay Rate, and multiplies by static percentage to give Term Rate
 const getTermRateFromPay = (payRate) => {
-  if (payRate !== "0" && payRate !== "") {
+  if (payRate !== "0" && payRate !== "0") {
     const termRate = (payRate * 0.83).toFixed(2);
     return termRate.toString();
   }
@@ -23,13 +23,13 @@ const getTermRateFromPay = (payRate) => {
 
 // Takes an INC Pay Rate and markup, multiplies to give Bill Rate
 const getBillRateFromPay = (payRate, markup) => {
-  if (markup !== "0") {
+  if (payRate !== "0" && markup !== "0") {
     const payRateNumber = parseFloat(payRate).toFixed(2);
     const billRate = payRateNumber * markup;
     return billRate.toString();
   }
 
-  return "";
+  return "0";
 };
 
 // Takes a Term Rate and multiplies to return an INC Pay Rate

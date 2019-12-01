@@ -37,7 +37,15 @@ const BillRate = () => {
   };
 
   const renderMobileValuesComponent = () => {
-    return <MobileValuesComponent />;
+    return (
+      <MobileValuesComponent  
+        billRate={rate}
+        percentage={margin} 
+        termRate={termRate} 
+        payRate={payRate} 
+        type="Margin" 
+      />
+    );
   }
 
   return (

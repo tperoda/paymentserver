@@ -43,7 +43,7 @@ const ValuesComponent = ({
             {type}
           </Table.Cell>
           <Table.Cell textAlign="center">
-            {percentage || "0"}
+            {`${percentage}%` || "0%"}
           </Table.Cell>
         </Table.Row>
       </Table.Body>

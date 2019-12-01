@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { useWindowDimensions } from "utils";
 import { Formik, Form, Field } from "formik";
@@ -48,6 +48,7 @@ const FormComponent = ({
           </div>
           <div>
             <Dropdown
+            className={errors.rate ? "error-border" : ""}
               selection
               placeholder={percentType}
               name={percentType.toLowerCase()}
@@ -55,10 +56,10 @@ const FormComponent = ({
               value={percentageRates ? percentageRates.value : ""}
               onChange={(e, { name, value }) => setFieldValue(name, value)}
             />
-            {/* <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p> */}
+            <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p>
           </div>
           {width < 768 && renderMobileButtons()}
-          {width > 768 && renderButton()}
+          {width >= 768 && renderButton()}
         </Form>
       )}
     </Formik>

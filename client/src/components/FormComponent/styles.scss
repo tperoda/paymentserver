@@ -28,6 +28,10 @@
     a {
       color: $light-grey;
     }
+
+    .form-button:nth-child(3) {
+      margin-right: 0px !important;
+    }
   }
 
   button.form-button {
@@ -50,6 +54,7 @@
   .error-message {
     font-size: 10px;
     color: $error-red;
+    height: 12px;
   }
 
   .error-border {

@@ -1,3 +1,16 @@
+@import "styles/mixins.scss";
+@import "styles/placeholders.scss";
+
 .ui.grid {
   margin-top: 65px;
+}
+
+.mobile-values {
+  .mobile-values-header {
+    @extend %table-header;
+  }
+
+  .mobile-values-label {
+    font-weight: bold;
+  }
 }
