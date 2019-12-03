@@ -6,6 +6,7 @@ import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
 import "./styles.scss";
 import { UserContext } from "store/Store";
+import { marginDefaultRates } from "constants/rates";
 
 
 const BillRate = () => {
@@ -58,7 +59,7 @@ const BillRate = () => {
         rateType="Bill Rate"
         percentType="Margin"
         setData={setData}
-        percentageRates={marginArray}
+        percentageRates={marginArray || marginDefaultRates}
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}

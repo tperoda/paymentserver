@@ -6,6 +6,7 @@ import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
 import "./styles.scss";
 import { UserContext } from "store/Store";
+import { markupDefaultRates } from "constants/rates";
 
 const TermRate = () => {
   const [data, setData] = useState({
@@ -56,7 +57,7 @@ const TermRate = () => {
         rateType="Pay Rate"
         percentType="Markup"
         setData={setData}
-        percentageRates={markupArray}
+        percentageRates={markupArray || markupDefaultRates}
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}

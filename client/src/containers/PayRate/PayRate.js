@@ -6,6 +6,7 @@ import FormComponent from "components/FormComponent";
 import { getTermRateFromPay, getBillRateFromPay, filterRates, useWindowDimensions } from "utils";
 import "./styles.scss";
 import { UserContext } from "store/Store";
+import { markupDefaultRates } from "constants/rates";
 
 const PayRate = () => {
   const [data, setData] = useState({
@@ -57,7 +58,7 @@ const PayRate = () => {
         rateType="Pay Rate"
         percentType="Markup"
         setData={setData}
-        percentageRates={markupArray}
+        percentageRates={markupArray || markupDefaultRates}
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}
