@@ -20,7 +20,7 @@ const HeaderComponent = ({ loginValues }) => {
         </Menu.Item>
         <Menu.Item className="update-link">
           <h4>
-            <Link to="/update">Update Rates</Link>
+            <Link to="/manage_rates">Manage Rates</Link>
           </h4>
         </Menu.Item>
       </Menu.Menu>

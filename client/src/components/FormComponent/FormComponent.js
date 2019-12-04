@@ -15,7 +15,7 @@ const FormComponent = ({
     return (
       <div className="mobile-buttons">
         <Button className="form-button" ><a href="/auth/google">Login</a></Button>
-        <Button className="form-button" ><a href="/update">Update Rates</a></Button>
+        <Button className="form-button" ><a href="/manage_rates">Manage Rates</a></Button>
         <Button className="form-button" type="submit">Submit</Button>
       </div>
     )
