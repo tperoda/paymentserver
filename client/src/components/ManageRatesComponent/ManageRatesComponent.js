@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Table, Label, Button, Input } from "semantic-ui-react";
 
-const ManageRatesComponent = ({ marginArray }) => {
+const ManageRatesComponent = ({ marginArray, setData }) => {
 
   const removeItem = (val) => {
-    marginArray.forEach(item => {
-      if (item.key === val) {
-        const index = marginArray.indexOf(item);
-        marginArray.splice(index, 1);
-      }
-    });
+    const newArray = marginArray.filter(item => item.key !== val);
+    setData(newArray);
   };
 
   const renderArray = () => {

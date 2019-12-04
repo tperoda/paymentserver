@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ManageRatesComponent from "components/ManageRatesComponent";
 import { Tab } from "semantic-ui-react";
 import { UserContext } from "store/Store";
 
 const ManageRates = () => {
   const user = useContext(UserContext);
-
-  const marginDefaultRates = [
+  const [data, setData] = useState([
     {
       key: "18",
       text: "18%",
@@ -27,11 +26,11 @@ const ManageRates = () => {
       text: "25%",
       value: "25"
     }
-  ];
+  ]);
 
   const { margin, markup } = user;
   const panes = [
-    { menuItem: "Margin", render: () => <Tab.Pane><ManageRatesComponent marginArray={marginDefaultRates} /></Tab.Pane> },
+    { menuItem: "Margin", render: () => <Tab.Pane><ManageRatesComponent marginArray={data} setData={setData} /></Tab.Pane> },
     { menuItem: "Markup", render: () => <Tab.Pane><ManageRatesComponent markupArray={markup} /></Tab.Pane> }
   ]
   return <Tab panes={panes} />;
