@@ -14,7 +14,8 @@ const PayRate = () => {
     markup: "0"
   });
 
-  const user = useContext(UserContext);
+  const value = useContext(UserContext);
+  const { user } = value;
   const markupArray = user.markup;
 
   const { rate, markup } = data;

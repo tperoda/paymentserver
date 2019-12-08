@@ -4,7 +4,9 @@ import { Tab } from "semantic-ui-react";
 import { UserContext } from "store/Store";
 
 const ManageRates = () => {
-  const user = useContext(UserContext);
+  const value = useContext(UserContext);
+  const { user, deleteRate, postRate } = value;
+  
   const [data, setData] = useState([
     {
       key: "18",
@@ -30,7 +32,7 @@ const ManageRates = () => {
 
   const { margin, markup } = user;
   const panes = [
-    { menuItem: "Margin", render: () => <Tab.Pane><ManageRatesComponent marginArray={data} setData={setData} /></Tab.Pane> },
+    { menuItem: "Margin", render: () => <Tab.Pane><ManageRatesComponent marginArray={user.margin} deleteRate={deleteRate} postRate={postRate} /></Tab.Pane> },
     { menuItem: "Markup", render: () => <Tab.Pane><ManageRatesComponent markupArray={markup} /></Tab.Pane> }
   ]
   return <Tab panes={panes} />;

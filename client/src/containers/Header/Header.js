@@ -3,8 +3,8 @@ import HeaderComponent from "components/HeaderComponent";
 import { UserContext } from "store/Store";
 
 const Header = () => {
-  const user = useContext(UserContext);
-  const { googleId } = user;
+  const value = useContext(UserContext);
+  const { googleId } = value.user;
 
   const setLoginValues = () => {
     if (googleId !== undefined) {

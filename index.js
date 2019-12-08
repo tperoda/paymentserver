@@ -8,7 +8,7 @@ require("./models/User");
 require("./services/passport");
 
 mongoose
-  .connect(keys.mongoURI, { useNewUrlParser: true})
+  .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected To Database");
   })

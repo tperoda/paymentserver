@@ -25,13 +25,19 @@ const userSchema = new Schema(
 );
 
 userSchema.pre('save', function(next) {
-  for (i = 0; i < defaultMargin.length; i++) {
-    this.margin.push(defaultMargin[i]);
-  };
 
-  for (i = 0; i < defaultMarkup.length; i++) {
-    this.markup.push(defaultMarkup[i]);
-  };
+  if (this.margin.length > 0 || this.markup.length > 0) {
+  
+  } else {
+
+    for (i = 0; i < defaultMargin.length; i++) {
+      this.margin.push(defaultMargin[i]);
+    };
+  
+    for (i = 0; i < defaultMarkup.length; i++) {
+      this.markup.push(defaultMarkup[i]);
+    };
+  }
 
   next();
 });

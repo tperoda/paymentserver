@@ -15,7 +15,8 @@ const BillRate = () => {
     rate: "0"
   });
 
-  const user = useContext(UserContext);
+  const value = useContext(UserContext);
+  const { user } = value;
   const marginArray = user.margin;
 
   const { rate, margin } = data;

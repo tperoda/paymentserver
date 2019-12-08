@@ -16,12 +16,27 @@ const Store = ({ children }) => {
     }
   };
 
+  const deleteRate = (val, type) => {
+    const url = "/api/manage_rates";
+    axios.delete(url, {params: { val: val, type: type}})
+    .then(response => setUser(response.data))
+    .catch(error => console.log("Delete Rate Route Error", error));
+  };
+
+  const postRate = (val, type) => {
+    const url = "/api/manage_rates";
+    axios.post(url, { val: val, type: type})
+    .then(response => setUser(response.data))
+    .catch(error => console.log("Post Rate Route Error", error));
+  };
+
+
   useEffect(() => {
     fetchUser();
   }, []);
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{ user, deleteRate, postRate }}>
       {children}
     </UserContext.Provider>
   );

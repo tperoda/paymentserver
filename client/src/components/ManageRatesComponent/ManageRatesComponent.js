@@ -1,12 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table, Label, Button, Input } from "semantic-ui-react";
 
-const ManageRatesComponent = ({ marginArray, setData }) => {
-
-  const removeItem = (val) => {
-    const newArray = marginArray.filter(item => item.key !== val);
-    setData(newArray);
-  };
+const ManageRatesComponent = ({ marginArray, deleteRate, postRate }) => {
+  const [ inputVal, setInputVal ] = useState();
 
   const renderArray = () => {
     if (marginArray !== undefined) {
@@ -14,7 +10,7 @@ const ManageRatesComponent = ({ marginArray, setData }) => {
         <Table.Row>
           <Table.Cell>
             {val.text}
-            <Button onClick={() => removeItem(val.key)}>Remove</Button>
+            <Button onClick={() => deleteRate(val.key, "margin")}>Remove</Button>
           </Table.Cell>
         </Table.Row>
       ));
@@ -32,8 +28,8 @@ const ManageRatesComponent = ({ marginArray, setData }) => {
         {renderArray()}
         <Table.Row>
           <Table.Cell>
-            <Input />
-            <Button name="add" />
+            <Input onChange={e => setInputVal(e.target.value)} />
+            <Button name="add" onClick={() => postRate(inputVal, "margin")} />
           </Table.Cell>
         </Table.Row>
       </Table.Body>

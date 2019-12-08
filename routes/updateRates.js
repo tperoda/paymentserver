@@ -1,28 +1,82 @@
-const express = require("express");
-const passport = require("passport");
 const requireLogin = require("../middleware/requireLogin");
 
 module.exports = app => {
-  app.get("/api/get_margin", requireLogin, (req, res) => {
-    // res.send(req.users);
-    console.log(req.margin);
+  app.post("/api/manage_rates", requireLogin, (req, res) => {
+    if (req.body.type === "margin") {
+      try {
+        const marginArray = req.user.margin;
+        marginArray.push({
+          key: req.body.val,
+          text: req.body.val,
+          value: req.body.val
+        });
+  
+        req.user.margin = [...marginArray];
+        req.user.save();
+  
+        res.send(req.user);
+      } catch(error) {
+        console.log("Margin Post Error", error);
+      }
+    } else if (req.body.type === "markup") {
+      try {
+        const markup = parseFloat((req.body.val / 100) + 1).toFixed(3);
+        
+        const getMarginPercent = () => {
+          const total = 100 * markup;
+          const diff = total - 100;
+          const marginNumber = ((diff / total) * 100).toFixed(1);
+          return marginNumber.toString();
+        };
+
+        const marginPercent = getMarginPercent();
+
+        const markupArray = req.user.markup;
+        markupArray.push({
+          key: req.body.val,
+          text: req.body.val,
+          value: req.body.val,
+          markup: markup,
+          marginPercent: marginPercent
+        });
+  
+        req.user.markup = [...markupArray];
+        req.user.save();
+  
+        res.send(req.user);
+      } catch(error) {
+        console.log("Margin Post Error", error);
+      }
+    }
+    
   });
 
-  app.get("/api/get_markup", requireLogin, (req, res) => {
-    // res.send(res.markup);
-    console.log(req.markup);
+  app.delete("/api/manage_rates", requireLogin, (req, res) => {
+
+    if (req.query.type === "margin") {
+      try {
+        const marginArray = req.user.margin;
+        const newArray = marginArray.filter(item => item.key !== req.query.val);
+
+        req.user.margin = [...newArray];
+        req.user.save();
+
+        return res.send(req.user);
+      } catch(error) {
+        console.log("Delete Margin Route Express Error", error);
+      }
+    } else if (req.query.type === "markup") {
+      try {
+        const markupArray = req.user.markup;
+        const newArray = markupArray.filter(item => item.key !== req.query.val);
+
+        req.user.markup = [...newArray];
+        req.user.save();
+
+        return res.send(req.user);
+      } catch(error) {
+        console.log("Delete Markup Express Route Error", error);
+      }
+    }
   });
-
-  app.post("/api/reset_margin", requireLogin, (req, res) => {
-    const defaultRates = {
-      key: "20",
-      text: "20",
-      value: "20"
-    };
-
-    req.user.margin.push(defaultRates);
-
-    const user = req.user.save();
-    res.send(user);
-  })
 };
