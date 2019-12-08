@@ -32,11 +32,11 @@ require("./routes/updateRates")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve Prod Assets
-  app.use(express.static("paymentcalc/build"));
+  app.use(express.static("client/build"));
   // Express will serve index.html if route is unknown
   const path = require("path");
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(_dirname, "paymentcalc", "build", "index.html"));
+    res.sendFile(path.resolve(_dirname, "client", "build", "index.html"));
   });
 };
 
