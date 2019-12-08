@@ -17,15 +17,15 @@ const MobileValuesComponent = ({
       </Grid.Row>
       <Grid.Row columns={4}>
         <Grid.Column className="mobile-values-label">Bill</Grid.Column>
-        <Grid.Column className="mobile-values-value">{billRate}</Grid.Column>
+        <Grid.Column className="mobile-values-value">${billRate}</Grid.Column>
         <Grid.Column className="mobile-values-label">Pay</Grid.Column>
-        <Grid.Column className="mobile-values-value">{payRate}</Grid.Column>
+        <Grid.Column className="mobile-values-value">${payRate}</Grid.Column>
       </Grid.Row>
       <Grid.Row columns={4}>
         <Grid.Column className="mobile-values-label">Term</Grid.Column>
-        <Grid.Column className="mobile-values-value">{termRate}</Grid.Column>
+        <Grid.Column className="mobile-values-value">${termRate}</Grid.Column>
         <Grid.Column className="mobile-values-label">{type}</Grid.Column>
-        <Grid.Column className="mobile-values-value">{percentage}</Grid.Column>
+        <Grid.Column className="mobile-values-value">{percentage}%</Grid.Column>
       </Grid.Row>
     </Grid>
   );

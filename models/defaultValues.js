@@ -16,7 +16,7 @@ const defaultMargin = [
   },
   {
   key: "25",
-  text: "25",
+  text: "25%",
   value: "25"
   },
 ];
