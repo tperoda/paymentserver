@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Table, Label, Button, Input } from "semantic-ui-react";
 import "./styles.scss";
 
 const ManageRatesComponent = ({ ratesArray, deleteRate, postRate, type }) => {
+  ManageRatesComponent.propTypes = {
+    ratesArray: PropTypes.shape({}).isRequired,
+    deleteRate: PropTypes.func.isRequired,
+    postRate: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired
+  };
+
   const [ inputVal, setInputVal ] = useState();
   
-
   const renderArray = () => {
     if (ratesArray !== undefined) {
       return ratesArray.map(val => (

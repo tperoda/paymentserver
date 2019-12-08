@@ -17,7 +17,8 @@ const validationSchema = yup.object({
   
       return amountNumber.length >= min;
     }
-  }).required("Rate is a required field")
+  }).required("Rate is a required field"),
+  percent: yup.string().required("Percent is a required field")
 });
 
 module.exports = { validationSchema };

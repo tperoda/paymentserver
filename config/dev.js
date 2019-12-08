@@ -4,9 +4,3 @@ module.exports = {
   googleClientSecret: "muTKtFnKP495tDiJD1eSmLxk",
   cookieKey: "123kjif90asde"
 };
-
-
-
-
-// "590366216911-bf7qsevj5v1nfu2n8fo6b2i371g7hkfc.apps.googleusercontent.com"
-// "GDifK0BPN-eNJwfQFE306iE4"

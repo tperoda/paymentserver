@@ -10,6 +10,12 @@ import "./styles.scss";
 const FormComponent = ({
   rateType, percentType, setData, percentageRates
 }) => {
+  FormComponent.propTypes = {
+    rateType: PropTypes.string.isRequired,
+    percentType: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+    percentageRates: PropTypes.shape({}).isRequired
+  };
 
   const renderMobileButtons = () => {
     return (
@@ -31,8 +37,7 @@ const FormComponent = ({
       initialValues={
       {
         rate: "",
-        margin: "",
-        markup: ""
+        percent: ""
       }
     }
       validationSchema={validationSchema}
@@ -40,23 +45,32 @@ const FormComponent = ({
         setData(data);
       }}
     >
-      {({ errors, setFieldValue }) => (
+      {({ errors, touched, setFieldValue }) => (
         <Form className="rate-input-form">
           <div className="form-rate-field">
-            <Field placeholder={rateType} as={Input} name="rate" className={errors.rate ? "error-border" : ""} />
-            <p className="error-message">{errors.rate}</p>
+            <Field 
+              placeholder={rateType} 
+              as={Input} 
+              name="rate" 
+              className={errors.rate && touched.rate ? "error-border" : ""} 
+            />
+            <p className="error-message">
+              {errors.rate && touched.rate ? errors.rate : null}
+            </p>
           </div>
           <div>
             <Dropdown
-            className={errors.rate ? "error-border" : ""}
+              className={errors.percent && touched.percent ? "error-border" : ""}
               selection
               placeholder={percentType}
-              name={percentType.toLowerCase()}
+              name="percent"
               options={percentageRates}
               value={percentageRates ? percentageRates.value : ""}
               onChange={(e, { name, value }) => setFieldValue(name, value)}
             />
-            <p className="error-message">{errors.margin || errors.markup ? errors.margin : null}</p>
+            <p className="error-message">
+              {errors.percent && touched.percent ? errors.percent : null}
+            </p>
           </div>
           {width < 768 && renderMobileButtons()}
           {width >= 768 && renderButton()}

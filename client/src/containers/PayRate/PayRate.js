@@ -11,16 +11,16 @@ import { markupDefaultRates } from "constants/rates";
 const PayRate = () => {
   const [data, setData] = useState({
     rate: "0",
-    markup: "0"
+    percent: "0"
   });
 
   const value = useContext(UserContext);
   const { user } = value;
-  const markupArray = user.markup;
+  const markupArray = user ? user.markup : markupDefaultRates;
 
-  const { rate, markup } = data;
+  const { rate, percent } = data;
 
-  const billRate = getBillRateFromPay(rate, filterRates(markup, markupArray));
+  const billRate = getBillRateFromPay(rate, filterRates(percent, markupArray));
   const termRate = getTermRateFromPay(rate);
 
   const { width } = useWindowDimensions();
@@ -29,7 +29,7 @@ const PayRate = () => {
     return (
       <ValuesComponent
         billRate={billRate}
-        percentage={markup}
+        percentage={percent}
         termRate={termRate}
         payRate={rate}
         type="Markup"
@@ -41,7 +41,7 @@ const PayRate = () => {
     return (
       <MobileValuesComponent 
         billRate={billRate}
-        percentage={markup}
+        percentage={percent}
         termRate={termRate}
         payRate={rate}
         type="Markup"

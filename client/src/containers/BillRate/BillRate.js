@@ -11,7 +11,7 @@ import { marginDefaultRates } from "constants/rates";
 
 const BillRate = () => {
   const [data, setData] = useState({
-    margin: "0",
+    percent: "0",
     rate: "0"
   });
 
@@ -19,9 +19,9 @@ const BillRate = () => {
   const { user } = value;
   const marginArray = user.margin;
 
-  const { rate, margin } = data;
+  const { rate, percent } = data;
 
-  const payRate = getPayRateFromBill(rate, margin);
+  const payRate = getPayRateFromBill(rate, percent);
   const termRate = getTermRateFromPay(payRate);
 
   const { width } = useWindowDimensions();
@@ -30,7 +30,7 @@ const BillRate = () => {
     return (
       <ValuesComponent
         billRate={rate}
-        percentage={margin}
+        percentage={percent}
         termRate={termRate}
         payRate={payRate}
         type="Margin"
@@ -42,7 +42,7 @@ const BillRate = () => {
     return (
       <MobileValuesComponent  
         billRate={rate}
-        percentage={margin} 
+        percentage={percent} 
         termRate={termRate} 
         payRate={payRate} 
         type="Margin" 
