@@ -56,7 +56,7 @@ const FormComponent = ({
               value={percentageRates ? percentageRates.value : ""}
               onChange={(e, { name, value }) => setFieldValue(name, value)}
             />
-            <p className="error-message">{errors.margin ? errors.margin : errors.markup}</p>
+            <p className="error-message">{errors.margin || errors.markup ? errors.margin : null}</p>
           </div>
           {width < 768 && renderMobileButtons()}
           {width >= 768 && renderButton()}

@@ -22,3 +22,16 @@
   background: $med-blue;
   color: $light-grey;
 }
+
+%button {
+  background: $med-blue !important;
+
+  a {
+    color: $light-grey;
+  }
+}
+
+%button-no-link {
+  background: $med-blue !important;
+  color: $light-grey !important;
+}

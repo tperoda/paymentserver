@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Table, Label, Button, Input } from "semantic-ui-react";
+import "./styles.scss";
 
-const ManageRatesComponent = ({ marginArray, deleteRate, postRate }) => {
+const ManageRatesComponent = ({ ratesArray, deleteRate, postRate, type }) => {
   const [ inputVal, setInputVal ] = useState();
 
   const renderArray = () => {
-    if (marginArray !== undefined) {
-      return marginArray.map(val => (
+    if (ratesArray !== undefined) {
+      return ratesArray.map(val => (
         <Table.Row>
-          <Table.Cell>
-            {val.text}
-            <Button onClick={() => deleteRate(val.key, "margin")}>Remove</Button>
+          <Table.Cell className="rate-row">
+            <span className="rate-value">
+             {val.text}
+            </span>
+            <Button className="rate-button" onClick={() => deleteRate(val.key, type)}>Remove</Button>
           </Table.Cell>
         </Table.Row>
       ));
@@ -18,18 +21,18 @@ const ManageRatesComponent = ({ marginArray, deleteRate, postRate }) => {
     return "";
   }
   return (
-    <Table celled>
+    <Table celled columns={1}>
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-            <Label ribbon>Rates</Label>
+            <Label ribbon>Your {type} rates</Label>
           </Table.Cell>
           </Table.Row>
         {renderArray()}
         <Table.Row>
           <Table.Cell>
-            <Input onChange={e => setInputVal(e.target.value)} />
-            <Button name="add" onClick={() => postRate(inputVal, "margin")} />
+            <Input className="rate-input" onChange={e => setInputVal(e.target.value)} />
+            <Button className="add-button " name="add" onClick={() => postRate(inputVal, type)}>Add</Button>
           </Table.Cell>
         </Table.Row>
       </Table.Body>

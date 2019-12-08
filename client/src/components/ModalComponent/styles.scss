@@ -1,0 +1,6 @@
+@import "styles/placeholders.scss";
+
+.modal-button {
+  margin-top: 10px !important;
+  @extend %button;
+}

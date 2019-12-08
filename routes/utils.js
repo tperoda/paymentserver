@@ -20,6 +20,6 @@ const getMarginPercent = (markup) => {
   return marginNumber.toString();
 };
 
-const getMarkup = (val) => parseFloat((val / 100) + 1).toFixed(3);
+const getMarkup = (val) => parseFloat((val / 100) + 1);
 
 module.exports = { compare, getMarginPercent, getMarkup };

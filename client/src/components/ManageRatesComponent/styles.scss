@@ -1,0 +1,30 @@
+@import "styles/variables.scss";
+@import "styles/placeholders.scss";
+
+
+.add-button {
+  @extend %button-no-link;
+  width: 32%;
+  float: right;
+}
+
+.rate-button {
+  float: right;
+  background: $white-blue !important;
+  
+}
+
+.rate-row {
+  text-align: center !important;
+
+  .rate-value {
+    padding-top: 100px !important;
+    position: relative;
+    top: 8px;
+    font-size: 16px;
+  }
+}
+
+.rate-input {
+  border: none !important;
+}
