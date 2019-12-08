@@ -1,4 +1,5 @@
 const requireLogin = require("../middleware/requireLogin");
+const compare = require("./utils");
 
 module.exports = app => {
   app.post("/api/manage_rates", requireLogin, (req, res) => {
@@ -7,9 +8,11 @@ module.exports = app => {
         const marginArray = req.user.margin;
         marginArray.push({
           key: req.body.val,
-          text: req.body.val,
+          text: `${req.body.val}%`,
           value: req.body.val
         });
+
+        marginArray.sort(compare);
   
         req.user.margin = [...marginArray];
         req.user.save();
@@ -21,7 +24,7 @@ module.exports = app => {
     } else if (req.body.type === "markup") {
       try {
         const markup = parseFloat((req.body.val / 100) + 1).toFixed(3);
-        
+
         const getMarginPercent = () => {
           const total = 100 * markup;
           const diff = total - 100;
@@ -34,11 +37,13 @@ module.exports = app => {
         const markupArray = req.user.markup;
         markupArray.push({
           key: req.body.val,
-          text: req.body.val,
+          text: `${req.body.val}% - (${marginPercent}% Margin)`,
           value: req.body.val,
           markup: markup,
           marginPercent: marginPercent
         });
+
+        markupArray.sort(compare);
   
         req.user.markup = [...markupArray];
         req.user.save();
