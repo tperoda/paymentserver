@@ -1,6 +1,5 @@
 const yup = require("yup");
 
-// TODO: Add logic to allow empty strings in validation for margin and markup
 const min = 0;
 const validationSchema = yup.object({
   rate: yup.string()
@@ -18,9 +17,7 @@ const validationSchema = yup.object({
   
       return amountNumber.length >= min;
     }
-  }).required("Rate is a required field"),
-  margin: yup.string().required("Percentage is a required field"),
-  markup: yup.string().required("Percentage is a required field")
+  }).required("Rate is a required field")
 });
 
 module.exports = { validationSchema };

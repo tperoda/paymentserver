@@ -1,5 +1,3 @@
-// TODO: Add more rates
-
 const marginDefaultRates = [
   {
     key: "18",

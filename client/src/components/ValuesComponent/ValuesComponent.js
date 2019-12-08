@@ -4,7 +4,6 @@ import { Table } from "semantic-ui-react";
 import { formatCurrency } from "utils";
 import "./styles.scss";
 
-// TODO: Style component, possibly add modal or display for term rate calc
 const ValuesComponent = ({
   billRate, 
   payRate, 

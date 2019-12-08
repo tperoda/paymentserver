@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container } from "semantic-ui-react";
-import Login from "containers/Login";
 import ManageRates from "containers/ManageRates";
 import Header from "./containers/Header";
 import LandingComponent from "./containers/LandingPage/LandingPage";
@@ -22,7 +21,6 @@ function App() {
             <main>
                 <Switch>
                   <Route exact path="/" component={LandingComponent} />
-                  <Route exact path="/login" component={Login} />
                   <Route exact path="/manage_rates" component={ManageRates} />
                 </Switch>
             </main>

@@ -6,7 +6,7 @@ import { Input, Dropdown, Button } from "semantic-ui-react";
 import { validationSchema } from "./validation";
 import "./styles.scss";
 
-// TODO: Breakout components to setup error handling on validation
+// TODO: Fix error validation/initial values
 const FormComponent = ({
   rateType, percentType, setData, percentageRates
 }) => {
