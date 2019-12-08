@@ -42,7 +42,7 @@ module.exports = app => {
   
         res.send(req.user);
       } catch(error) {
-        console.log("Margin Post Error", error);
+        console.log("Markup Post Error", error);
       }
     }
   });
