@@ -1,4 +1,11 @@
+@import "styles/mixins.scss";
+
 .manage-rates-container {
   width: 30%;
+  min-width: 320px;
   margin: 50px auto;
+
+  @include for-mobile {
+    width: 100%;
+  }
 }

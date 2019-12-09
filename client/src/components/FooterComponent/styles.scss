@@ -1,8 +1,8 @@
 @import "../../styles/placeholders.scss";
 
 .payment-footer, .push {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
   width: 100%;
   height: 50px;
   align-items: center;

@@ -8,19 +8,20 @@ import "./styles.scss";
 
 // TODO: Fix error validation/initial values
 const FormComponent = ({
-  rateType, percentType, setData, percentageRates
+  rateType, percentType, setData, percentageRates, loginValues
 }) => {
   FormComponent.propTypes = {
     rateType: PropTypes.string.isRequired,
     percentType: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
-    percentageRates: PropTypes.shape({}).isRequired
+    percentageRates: PropTypes.shape({}).isRequired,
+    loginValues: PropTypes.shape({}).isRequired
   };
 
   const renderMobileButtons = () => {
     return (
       <div className="mobile-buttons">
-        <Button className="form-button" ><a href="/auth/google">Login</a></Button>
+        <Button className="form-button" ><a href={loginValues.url}>{loginValues.text}</a></Button>
         <Button className="form-button" ><a href="/manage_rates">Manage Rates</a></Button>
         <Button className="form-button" type="submit">Submit</Button>
       </div>

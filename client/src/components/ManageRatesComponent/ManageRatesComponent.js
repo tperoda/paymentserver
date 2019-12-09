@@ -16,8 +16,8 @@ const ManageRatesComponent = ({ ratesArray, deleteRate, postRate, type }) => {
   const renderArray = () => {
     if (ratesArray !== undefined) {
       return ratesArray.map(val => (
-        <Table.Row key={val._id.toString()}>
-          <Table.Cell className="rate-row">
+        <Table.Row key={val._id.toString()} className="rate-row">
+          <Table.Cell>
             <span className="rate-value">{val.text}</span>
             <Button className="rate-button" onClick={() => deleteRate(val.key, type)}>Remove</Button>
           </Table.Cell>
@@ -27,22 +27,22 @@ const ManageRatesComponent = ({ ratesArray, deleteRate, postRate, type }) => {
     
   }
   return (
-    <Table celled>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>
-            <Label ribbon>Your {type} rates</Label>
-          </Table.Cell>
-        </Table.Row>
-        {renderArray()}
-        <Table.Row>
-          <Table.Cell>
-            <Input className="rate-input" onChange={e => setInputVal(e.target.value)} /> 
-            <Button className="add-button" name="add" onClick={() => postRate(inputVal, type)}>Add</Button>
-          </Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
+    <Table celled className="manage-rates-table">
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>
+          <Label ribbon>Your {type} rates</Label>
+        </Table.Cell>
+      </Table.Row>
+      {renderArray()}
+      <Table.Row>
+        <Table.Cell>
+          <Input className="rate-input" onChange={e => setInputVal(e.target.value)} /> 
+          <Button className="add-button" name="add" onClick={() => postRate(inputVal, type)}>Add</Button>
+        </Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
   );
 }
 

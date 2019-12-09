@@ -8,6 +8,7 @@ import { salaryCalculation } from "./SalaryCalculation";
 import { formatCurrency } from "./FormatCurrency";
 import { filterRates } from "./filterRates";
 import { useWindowDimensions } from "./useWindowDimensions";
+import { setLoginValues } from "./setLoginValues";
 
 export {
   getPayRateFromBill,
@@ -17,5 +18,6 @@ export {
   salaryCalculation,
   formatCurrency,
   filterRates,
-  useWindowDimensions
+  useWindowDimensions,
+  setLoginValues
 };
