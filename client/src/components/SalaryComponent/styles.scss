@@ -9,7 +9,11 @@
 }
 
 .salary-container {
-  display: none !important
+
+  @include for-mobile {
+    display: none !important;
+  }
+  
 }
 
 .salary-body {
