@@ -6,10 +6,10 @@
   th.salary-header {
     @extend %table-header;
   }
+}
 
-  @include for-mobile {
-    display: none;
-  }
+.salary-container {
+  display: none !important
 }
 
 .salary-body {

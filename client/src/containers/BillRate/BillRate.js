@@ -1,5 +1,9 @@
 import React, { useState, useContext } from "react";
-import { getPayRateFromBill, getTermRateFromPay, useWindowDimensions } from "utils";
+import { getPayRateFromBill, 
+  getTermRateFromPay, 
+  useWindowDimensions, 
+  setLoginValues 
+} from "utils";
 import ValuesComponent from "components/ValuesComponent";
 import MobileValuesComponent from "components/ValuesComponent/MobileValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
@@ -45,7 +49,7 @@ const BillRate = () => {
         percentage={percent} 
         termRate={termRate} 
         payRate={payRate} 
-        type="Margin" 
+        type="Margin"
       />
     );
   }
@@ -61,6 +65,7 @@ const BillRate = () => {
         percentType="Margin"
         setData={setData}
         percentageRates={marginArray || marginDefaultRates}
+        loginValues={setLoginValues(user.googleId)}
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}

@@ -1,30 +1,59 @@
 @import "styles/variables.scss";
 @import "styles/placeholders.scss";
+@import "styles/mixins.scss";
 
+.manage-rates-table {
 
-.add-button {
-  @extend %button-no-link;
-  width: 32%;
-  float: right;
-}
-
-.rate-button {
-  float: right;
-  background: $white-blue !important;
-  
-}
-
-.rate-row {
-  text-align: center !important;
-
-  .rate-value {
-    padding-top: 100px !important;
-    position: relative;
-    top: 8px;
-    font-size: 16px;
+  @include for-mobile {
+    width: 100% !important;
+    display: block !important;
   }
-}
 
-.rate-input {
-  border: none !important;
+  .add-button {
+    @extend %button-no-link;
+    width: 32%;
+    float: right;
+
+    @include for-mobile {
+      max-width: 92px;
+    }
+  }
+
+  .rate-button {
+    float: right;
+    background: $white-blue !important;
+    
+    @include for-mobile {
+      margin-top: 5px;
+    }
+  }
+
+  .rate-row {
+    text-align: center !important;
+
+    @include for-mobile {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      height: 50px;
+    }
+
+    .rate-value {
+      position: relative;
+      top: 8px;
+      font-size: 16px;
+
+      @include for-mobile {
+        top: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .rate-input {
+    border: none !important;
+
+    @include for-mobile {
+      width: 55% !important;
+    }
+  }
 }

@@ -3,7 +3,12 @@ import ValuesComponent from "components/ValuesComponent";
 import MobileValuesComponent from "components/ValuesComponent/MobileValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
 import FormComponent from "components/FormComponent";
-import { getTermRateFromPay, getBillRateFromPay, filterRates, useWindowDimensions } from "utils";
+import { getTermRateFromPay, 
+  getBillRateFromPay, 
+  filterRates, 
+  useWindowDimensions, 
+  setLoginValues 
+} from "utils";
 import "./styles.scss";
 import { UserContext } from "store/Store";
 import { markupDefaultRates } from "constants/rates";
@@ -60,6 +65,7 @@ const PayRate = () => {
         percentType="Markup"
         setData={setData}
         percentageRates={markupArray || markupDefaultRates}
+        loginValues={setLoginValues(user.googleId)}
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}
