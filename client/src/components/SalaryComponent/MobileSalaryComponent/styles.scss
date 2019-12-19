@@ -1,0 +1,12 @@
+@import "styles/mixins.scss";
+@import "styles/placeholders.scss";
+
+.mobile-salary {
+  .mobile-salary-header {
+    @extend %table-header;
+  }
+
+  .mobile-salary-label {
+    font-weight: bold;
+  }
+}

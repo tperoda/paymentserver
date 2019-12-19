@@ -14,7 +14,7 @@ const FormComponent = ({
     rateType: PropTypes.string.isRequired,
     percentType: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
-    percentageRates: PropTypes.shape({}).isRequired,
+    percentageRates: PropTypes.array.isRequired,
     loginValues: PropTypes.shape({}).isRequired
   };
 

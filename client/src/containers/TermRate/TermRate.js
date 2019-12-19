@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import { getBillRateFromPay, 
   getPayRateFromTerm, 
   filterRates, 
@@ -12,6 +12,7 @@ import FormComponent from "components/FormComponent";
 import "./styles.scss";
 import { UserContext } from "store/Store";
 import { markupDefaultRates } from "constants/rates";
+import MobileSalaryComponent from "components/SalaryComponent/MobileSalaryComponent";
 
 const TermRate = () => {
   const [data, setData] = useState({
@@ -21,7 +22,7 @@ const TermRate = () => {
 
   const value = useContext(UserContext);
   const { user } = value;
-  const markupArray = user ? user.markup : markupDefaultRates;
+  const markupArray = user.googleId ? user.markup : markupDefaultRates;
 
   const { rate, percent } = data;
 
@@ -32,25 +33,31 @@ const TermRate = () => {
 
   const renderValuesComponent = () => {
     return (
-      <ValuesComponent
-        billRate={billRate}
-        percentage={percent}
-        termRate={rate}
-        payRate={payRate}
-        type="Markup"
-      />
+      <Fragment>
+        <ValuesComponent
+          billRate={billRate}
+          percentage={percent}
+          termRate={rate}
+          payRate={payRate}
+          type="Markup"
+        />
+        <SalaryComponent payRate={payRate} termRate={rate} />
+      </Fragment>
     );
   }
 
   const renderMobileValuesComponent = () => {
     return (
-      <MobileValuesComponent 
-        billRate={billRate}
-        percentage={percent}
-        termRate={rate}
-        payRate={payRate}
-        type="Markup"
-      />
+      <Fragment>
+        <MobileValuesComponent 
+          billRate={billRate}
+          percentage={percent}
+          termRate={rate}
+          payRate={payRate}
+          type="Markup"
+        />
+        <MobileSalaryComponent payRate={payRate} termRate={rate} />
+      </Fragment>
     );
   }
   return (
@@ -60,7 +67,7 @@ const TermRate = () => {
         and want to know Bill Rate and Pay Rates
       </p>
       <FormComponent
-        rateType="Pay Rate"
+        rateType="Term Rate"
         percentType="Markup"
         setData={setData}
         percentageRates={markupArray || markupDefaultRates}
@@ -68,7 +75,6 @@ const TermRate = () => {
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}
-      <SalaryComponent payRate={payRate} termRate={rate} />
     </div>
   );
 };

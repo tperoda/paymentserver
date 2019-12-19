@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import { getPayRateFromBill, 
   getTermRateFromPay, 
   useWindowDimensions, 
@@ -11,6 +11,7 @@ import FormComponent from "components/FormComponent";
 import "./styles.scss";
 import { UserContext } from "store/Store";
 import { marginDefaultRates } from "constants/rates";
+import MobileSalaryComponent from "components/SalaryComponent/MobileSalaryComponent";
 
 
 const BillRate = () => {
@@ -21,7 +22,7 @@ const BillRate = () => {
 
   const value = useContext(UserContext);
   const { user } = value;
-  const marginArray = user.margin;
+  const marginArray = user.googleId ? user.margin : marginDefaultRates;
 
   const { rate, percent } = data;
 
@@ -32,25 +33,31 @@ const BillRate = () => {
 
   const renderValuesComponent = () => {
     return (
-      <ValuesComponent
-        billRate={rate}
-        percentage={percent}
-        termRate={termRate}
-        payRate={payRate}
-        type="Margin"
-      />
+      <Fragment>
+        <ValuesComponent
+          billRate={rate}
+          percentage={percent}
+          termRate={termRate}
+          payRate={payRate}
+          type="Margin"
+        />
+        <SalaryComponent payRate={payRate} termRate={termRate} />
+      </Fragment>
     );
   };
 
   const renderMobileValuesComponent = () => {
     return (
-      <MobileValuesComponent  
-        billRate={rate}
-        percentage={percent} 
-        termRate={termRate} 
-        payRate={payRate} 
-        type="Margin"
-      />
+      <Fragment>
+        <MobileValuesComponent  
+          billRate={rate}
+          percentage={percent} 
+          termRate={termRate} 
+          payRate={payRate} 
+          type="Margin"
+        />
+        <MobileSalaryComponent payRate={payRate} termRate={termRate} />
+      </Fragment>
     );
   }
 
@@ -69,7 +76,7 @@ const BillRate = () => {
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}
-      <SalaryComponent payRate={payRate} termRate={termRate} />
+      
     </div>
   );
 };
