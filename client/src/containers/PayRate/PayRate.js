@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import ValuesComponent from "components/ValuesComponent";
 import MobileValuesComponent from "components/ValuesComponent/MobileValuesComponent";
 import SalaryComponent from "components/SalaryComponent";
@@ -12,6 +12,7 @@ import { getTermRateFromPay,
 import "./styles.scss";
 import { UserContext } from "store/Store";
 import { markupDefaultRates } from "constants/rates";
+import MobileSalaryComponent from "components/SalaryComponent/MobileSalaryComponent";
 
 const PayRate = () => {
   const [data, setData] = useState({
@@ -21,7 +22,7 @@ const PayRate = () => {
 
   const value = useContext(UserContext);
   const { user } = value;
-  const markupArray = user ? user.markup : markupDefaultRates;
+  const markupArray = user.googleId ? user.markup : markupDefaultRates;
 
   const { rate, percent } = data;
 
@@ -32,25 +33,31 @@ const PayRate = () => {
 
   const renderValuesComponent = () => {
     return (
-      <ValuesComponent
-        billRate={billRate}
-        percentage={percent}
-        termRate={termRate}
-        payRate={rate}
-        type="Markup"
-      />
+      <Fragment>
+        <ValuesComponent
+          billRate={billRate}
+          percentage={percent}
+          termRate={termRate}
+          payRate={rate}
+          type="Markup"
+        />
+        <SalaryComponent payRate={rate} termRate={termRate} />
+      </Fragment>
     );
   };
 
   const renderMobileValuesComponent = () => {
     return (
-      <MobileValuesComponent 
-        billRate={billRate}
-        percentage={percent}
-        termRate={termRate}
-        payRate={rate}
-        type="Markup"
-      />
+      <Fragment>
+        <MobileValuesComponent 
+          billRate={billRate}
+          percentage={percent}
+          termRate={termRate}
+          payRate={rate}
+          type="Markup"
+        />
+        <MobileSalaryComponent payRate={rate} termRate={termRate} />
+      </Fragment>
     );
   };
 
@@ -69,7 +76,6 @@ const PayRate = () => {
       />
       {width < 768 && renderMobileValuesComponent()}
       {width >= 768 && renderValuesComponent()}
-      <SalaryComponent payRate={rate} termRate={termRate} />
     </div>
   );
 };
