@@ -10,10 +10,14 @@
 
 .salary-body {
   td {
-    width: 201px;
+    width: 215px;
   }
 
   i {
     padding-left: 4px;
+
+    @include for-tablet {
+      display: none;
+    }
   }
 }
